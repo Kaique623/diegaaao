@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Efeito de Confetes */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        /* Container Principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Cabeçalho com efeitos */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            animation: float 8s infinite ease-in-out;
+            z-index: -1;
+        }
+
+        .balloon:nth-child(2n) {
+            background: rgba(255, 215, 0, 0.7);
+        }
+
+        .balloon:nth-child(3n) {
+            background: rgba(255, 69, 0, 0.7);
+        }
+
+        .balloon:nth-child(4n) {
+            background: rgba(50, 205, 50, 0.7);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1.5s forwards 0.5s;
+        }
+
+        /* Mensagem Principal */
+        .message {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transform: translateY(50px);
+            opacity: 0;
+            animation: slideUp 1s forwards 1s;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .message p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .signature {
+            text-align: right;
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        /* Galeria de Fotos */
+        .gallery-section {
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: gold;
+            border-radius: 2px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .photo-frame {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            transform: scale(0.8);
+            opacity: 0;
+            animation: popIn 0.6s forwards;
+            animation-delay: calc(var(--delay) * 0.2s);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .photo-frame:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes popIn {
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-placeholder::before {
+            content: 'Clique para adicionar foto';
+            position: absolute;
+            bottom: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .frame-1 {
+            border: 10px solid gold;
+        }
+
+        .frame-2 {
+            border: 15px double #ff6b6b;
+        }
+
+        .frame-3 {
+            border: 5px solid #4ecdc4;
+            box-shadow: inset 0 0 0 10px white;
+        }
+
+        .frame-4 {
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid #ff9ff3;
+        }
+
+        .frame-5 {
+            border: none;
+            position: relative;
+        }
+
+        .frame-5::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px dashed #feca57;
+            border-radius: 15px;
+        }
+
+        .frame-6 {
+            border: 12px solid transparent;
+            border-image: linear-gradient(45deg, #ff9a9e, #fad0c4) 1;
+        }
+
+        /* Mensagens de Amigos */
+        .wishes {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            backdrop-filter: blur(5px);
+        }
+
+        .wishes h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .wish-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .wish-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 15px;
+            padding: 20px;
+            width: 280px;
+            transform: rotate(-2deg);
+            transition: transform 0.3s;
+        }
+
+        .wish-card:nth-child(2n) {
+            transform: rotate(2deg);
+        }
+
+        .wish-card:hover {
+            transform: rotate(0) scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .wish-card p {
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .wish-card .author {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        /* Contagem Regressiva */
+        .countdown {
+            text-align: center;
+            margin: 50px 0;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+        }
+
+        .countdown-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .timer-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px 25px;
+            border-radius: 10px;
+            min-width: 90px;
+        }
+
+        .timer-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: gold;
+        }
+
+        .timer-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hearts {
+            color: #ff6b6b;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .subtitle { font-size: 1.4rem; }
+            .gallery { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+            .timer { gap: 10px; }
+            .timer-item { padding: 10px; min-width: 70px; }
+            .timer-value { font-size: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            .message p { font-size: 1.1rem; }
+            .gallery { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Canvas para efeito de confetes -->
+    <canvas id="confetti-canvas"></canvas>
+    
+    <div class="container">
+        <header>
+            <!-- Balões flutuantes -->
+            <div class="balloon" style="left: 10%;"></div>
+            <div class="balloon" style="left: 20%; animation-delay: 2s;"></div>
+            <div class="balloon" style="left: 30%; animation-delay: 4s;"></div>
+            <div class="balloon" style="left: 50%; animation-delay: 1s;"></div>
+            <div class="balloon" style="left: 70%; animation-delay: 5s;"></div>
+            <div class="balloon" style="left: 80%; animation-delay: 3s;"></div>
+            <div class="balloon" style="left: 90%; animation-delay: 6s;"></div>
+            
+            <h1>Feliz Aniversário!</h1>
+            <div class="subtitle">Parabéns, <span id="friend-name">Amigo</span>! Que seu dia seja incrível!</div>
+        </header>
+        
+        <main>
+            <section class="message">
+                <p>Querido(a) <span id="friend-name-2">Amigo</span>,</p>
+                <p>Hoje é um dia muito especial - o seu aniversário! 🎉 Quero aproveitar esta oportunidade para celebrar você e tudo o que você significa para mim.</p>
+                <p>Você é uma pessoa incrível, cheia de luz e positividade. Sua amizade ilumina meus dias e torna a vida mais leve e divertida. Que este novo ciclo da sua vida traga ainda mais alegrias, conquistas e momentos memoráveis.</p>
+                <p>Desejo que todos os seus sonhos se realizem e que cada dia deste novo ano seja repleto de felicidade, saúde e amor. Você merece o melhor que a vida tem a oferecer!</p>
+                <p class="signature">Com todo carinho,<br>Seu amigo(a)</p>
+            </section>
+            
+            <section class="gallery-section">
+                <h2 class="section-title">Nossos Momentos</h2>
+                <div class="gallery">
+                    <div class="photo-frame frame-1" style="--delay: 1">
+                        <div class="photo-placeholder"></div>
+                    </div>
+                    <div class="photo-frame frame-2" style="--delay: 2">
+                        <div class="photo-placeholder"></div>
+                    </div>
+                    <div class="photo-frame frame-3" style="--delay: 3">
+                        <div class="photo-placeholder"></div>
+                    </div>
+                    <div class="photo-frame frame-4" style="--delay: 4">
+                        <div class="photo-placeholder"></div>
+                    </div>
+                    <div class="photo-frame frame-5" style="--delay: 5">
+                        <div class="photo-placeholder"></div>
+                    </div>
+                    <div class="photo-frame frame-6" style="--delay: 6">
+                        <div class="photo-placeholder"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="wishes">
+                <h2>Mensagens dos Amigos</h2>
+                <div class="wish-cards">
+                    <div class="wish-card">
+                        <p>"Parabéns pelo seu dia! Que seja repleto de alegrias e conquistas. Você merece o melhor!"</p>
+                        <div class="author">- Carlos</div>
+                    </div>
+                    <div class="wish-card">
+                        <p>"Feliz aniversário! Que este novo ano traga muita saúde, paz e realizações. Um grande abraço!"</p>
+                        <div class="author">- Ana</div>
+                    </div>
+                    <div class="wish-card">
+                        <p>"Hoje é seu dia especial! Aproveite cada momento e saiba que você é uma pessoa incrível. Parabéns!"</p>
+                        <div class="author">- Pedro</div>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="countdown">
+                <h2 class="countdown-title">Faltam</h2>
+                <div class="timer">
+                    <div class="timer-item">
+                        <div class="timer-value" id="days">00</div>
+                        <div class="timer-label">Dias</div>
+                    </div>
+                    <div class="timer-item">
+                        <div class="timer-value" id="hours">00</div>
+                        <div class="timer-label">Horas</div>
+                    </div>
+                    <div class="timer-item">
+                        <div class="timer-value" id="minutes">00</div>
+                        <div class="timer-label">Minutos</div>
+                    </div>
+                    <div class="timer-item">
+                        <div class="timer-value" id="seconds">00</div>
+                        <div class="timer-label">Segundos</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>Feito com <span class="hearts"><i class="fas fa-heart"></i></span> para você!</p>
+            <p>© 2023 - Feliz Aniversário!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Configurações iniciais
+        const friendName = "João"; // Altere para o nome do seu amigo
+        document.querySelectorAll('#friend-name, #friend-name-2').forEach(el => {
+            el.textContent = friendName;
+        });
+        
+        // Efeito de confetes
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const confetti = [];
+        const confettiCount = 150;
+        const gravity = 0.5;
+        const terminalVelocity = 5;
+        const drag = 0.075;
+        const colors = [
+            { front: '#ff0000', back: '#aa0000' }, // Vermelho
+            { front: '#00ff00', back: '#00aa00' }, // Verde
+            { front: '#0000ff', back: '#0000aa' }, // Azul
+            { front: '#ffff00', back: '#aaaa00' }, // Amarelo
+            { front: '#ff00ff', back: '#aa00aa' }, // Magenta
+            { front: '#00ffff', back: '#00aaaa' }  // Ciano
+        ];
+        
+        // Inicializar confetes
+        for (let i = 0; i < confettiCount; i++) {
+            confetti.push({
+                color: colors[Math.floor(Math.random() * colors.length)],
+                dimensions: {
+                    x: Math.random() * 10 + 10,
+                    y: Math.random() * 20 + 10
+                },
+                position: {
+                    x: Math.random() * canvas.width,
+                    y: canvas.height - 1
+                },
+                rotation: Math.random() * 360,
+                scale: {
+                    x: 1,
+                    y: 1
+                },
+                velocity: {
+                    x: Math.random() * 50 - 25,
+                    y: Math.random() * -50 - 50
+                }
+            });
+        }
+        
+        // Função para renderizar confetes
+        function renderConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            confetti.forEach((confetto, index) => {
+                const width = confetto.dimensions.x * confetto.scale.x;
+                const height = confetto.dimensions.y * confetto.scale.y;
+                
+                ctx.translate(confetto.position.x, confetto.position.y);
+                ctx.rotate(confetto.rotation * Math.PI / 180);
+                
+                // Parte frontal do confete
+                ctx.fillStyle = confetto.color.front;
+                ctx.fillRect(-width / 2, -height / 2, width, height);
+                
+                // Parte traseira do confete
+                ctx.fillStyle = confetto.color.back;
+                ctx.fillRect(-width / 2, -height / 2, width, height * 0.25);
+                
+                ctx.setTransform(1, 0, 0, 1, 0, 0);
+                
+                // Atualizar física
+                confetto.velocity.x -= confetto.velocity.x * drag;
+                confetto.velocity.y = Math.min(confetto.velocity.y + gravity, terminalVelocity);
+                confetto.velocity.x += Math.random() > 0.5 ? Math.random() : -Math.random();
+                
+                confetto.position.x += confetto.velocity.x;
+                confetto.position.y += confetto.velocity.y;
+                confetto.rotation += confetto.velocity.x;
+                
+                // Resetar confete se sair da tela
+                if (confetto.position.y > canvas.height) {
+                    confetti.splice(index, 1);
+                    confetti.push({
+                        color: colors[Math.floor(Math.random() * colors.length)],
+                        dimensions: {
+                            x: Math.random() * 10 + 10,
+                            y: Math.random() * 20 + 10
+                        },
+                        position: {
+                            x: Math.random() * canvas.width,
+                            y: -10
+                        },
+                        rotation: Math.random() * 360,
+                        scale: {
+                            x: 1,
+                            y: 1
+                        },
+                        velocity: {
+                            x: Math.random() * 50 - 25,
+                            y: Math.random() * -50 - 50
+                        }
+                    });
+                }
+            });
+            
+            requestAnimationFrame(renderConfetti);
+        }
+        
+        // Iniciar confetes
+        renderConfetti();
+        
+        // Contagem regressiva para o próximo aniversário
+        function updateCountdown() {
+            const now = new Date();
+            const nextBirthday = new Date(now.getFullYear(), 9, 15); // Altere para o mês (0-11) e dia do aniversário
+            
+            if (now > nextBirthday) {
+                nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+            }
+            
+            const diff = nextBirthday - now;
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Função para trocar imagens na galeria
+        document.querySelectorAll('.photo-placeholder').forEach((placeholder, index) => {
+            placeholder.addEventListener('click', function() {
+                alert(`Clique aqui para adicionar uma foto ao template ${index + 1}!\n\nNo site real, você pode implementar um upload de imagem.`);
+            });
+        });
+        
+        // Efeito de redimensionamento do canvas
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
