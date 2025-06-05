@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Aniversário!</title>
+    <title>Feliz Aniversário Diego!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -20,6 +20,7 @@
             color: white;
             min-height: 100vh;
             overflow-x: hidden;
+            padding: 10px;
         }
 
         @keyframes gradientBG {
@@ -40,9 +41,8 @@
 
         /* Container Principal */
         .container {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto;
-            padding: 20px;
             position: relative;
             z-index: 10;
         }
@@ -50,15 +50,15 @@
         /* Cabeçalho com efeitos */
         header {
             text-align: center;
-            padding: 60px 20px;
+            padding: 30px 10px;
             position: relative;
             overflow: hidden;
         }
 
         .balloon {
             position: absolute;
-            width: 40px;
-            height: 50px;
+            width: 30px;
+            height: 40px;
             background: rgba(255, 255, 255, 0.7);
             border-radius: 50%;
             animation: float 8s infinite ease-in-out;
@@ -83,8 +83,8 @@
         }
 
         h1 {
-            font-size: 4.5rem;
-            margin-bottom: 20px;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
             text-shadow: 0 0 10px rgba(0,0,0,0.5);
             animation: pulse 2s infinite;
         }
@@ -96,8 +96,8 @@
         }
 
         .subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
             opacity: 0;
             animation: fadeIn 1.5s forwards 0.5s;
         }
@@ -105,12 +105,12 @@
         /* Mensagem Principal */
         .message {
             background: rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
             backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transform: translateY(50px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transform: translateY(30px);
             opacity: 0;
             animation: slideUp 1s forwards 1s;
         }
@@ -124,27 +124,27 @@
         }
 
         .message p {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
         }
 
         .signature {
             text-align: right;
             font-style: italic;
-            font-size: 1.2rem;
-            margin-top: 20px;
+            font-size: 1.1rem;
+            margin-top: 15px;
         }
 
         /* Galeria de Fotos */
         .gallery-section {
-            margin: 60px 0;
+            margin: 40px 0;
             text-align: center;
         }
 
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
+            font-size: 2rem;
+            margin-bottom: 20px;
             position: relative;
             display: inline-block;
         }
@@ -152,203 +152,159 @@
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 80px;
             height: 4px;
             background: gold;
             border-radius: 2px;
         }
 
         .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-top: 20px;
         }
 
         .photo-frame {
             background: white;
             border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            padding: 10px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
             transform: scale(0.8);
             opacity: 0;
             animation: popIn 0.6s forwards;
             animation-delay: calc(var(--delay) * 0.2s);
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .photo-frame:hover {
-            transform: scale(1.05);
+            width: 90%;
+            max-width: 350px;
+            height: 250px;
+            overflow: hidden;
         }
 
         @keyframes popIn {
             to { transform: scale(1); opacity: 1; }
         }
 
-        .photo-placeholder {
+        .gallery-image {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            height: 100%;
+            object-fit: cover;
             border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #333;
-            font-size: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .photo-placeholder::before {
-            content: 'Clique para adicionar foto';
-            position: absolute;
-            bottom: 10px;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
         }
 
         .frame-1 {
-            border: 10px solid gold;
+            border: 8px solid gold;
         }
 
         .frame-2 {
-            border: 15px double #ff6b6b;
+            border: 12px double #ff6b6b;
         }
 
         .frame-3 {
             border: 5px solid #4ecdc4;
-            box-shadow: inset 0 0 0 10px white;
-        }
-
-        .frame-4 {
-            border-radius: 50%;
-            overflow: hidden;
-            border: 8px solid #ff9ff3;
-        }
-
-        .frame-5 {
-            border: none;
-            position: relative;
-        }
-
-        .frame-5::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            border: 2px dashed #feca57;
-            border-radius: 15px;
-        }
-
-        .frame-6 {
-            border: 12px solid transparent;
-            border-image: linear-gradient(45deg, #ff9a9e, #fad0c4) 1;
+            box-shadow: inset 0 0 0 8px white;
         }
 
         /* Mensagens de Amigos */
         .wishes {
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px 0;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
             backdrop-filter: blur(5px);
         }
 
         .wishes h2 {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
         }
 
         .wish-cards {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
+            flex-direction: column;
+            gap: 15px;
         }
 
         .wish-card {
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 15px;
-            padding: 20px;
-            width: 280px;
-            transform: rotate(-2deg);
+            border-radius: 12px;
+            padding: 15px;
+            transform: rotate(-1deg);
             transition: transform 0.3s;
         }
 
         .wish-card:nth-child(2n) {
-            transform: rotate(2deg);
+            transform: rotate(1deg);
         }
 
         .wish-card:hover {
-            transform: rotate(0) scale(1.05);
+            transform: rotate(0) scale(1.03);
             background: rgba(255, 255, 255, 0.25);
         }
 
         .wish-card p {
             font-style: italic;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
         }
 
         .wish-card .author {
             text-align: right;
             font-weight: bold;
+            font-size: 0.9rem;
         }
 
         /* Contagem Regressiva */
         .countdown {
             text-align: center;
-            margin: 50px 0;
-            padding: 30px;
+            margin: 40px 0;
+            padding: 20px;
             background: rgba(0, 0, 0, 0.2);
-            border-radius: 20px;
+            border-radius: 15px;
         }
 
         .countdown-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
         }
 
         .timer {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 10px;
             flex-wrap: wrap;
         }
 
         .timer-item {
             background: rgba(255, 255, 255, 0.15);
-            padding: 15px 25px;
-            border-radius: 10px;
-            min-width: 90px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            min-width: 70px;
         }
 
         .timer-value {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: bold;
             color: gold;
         }
 
         .timer-label {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         /* Rodapé */
         footer {
             text-align: center;
-            padding: 30px;
-            margin-top: 50px;
+            padding: 20px;
+            margin-top: 30px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
         }
 
         .hearts {
@@ -363,22 +319,6 @@
             75% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            .subtitle { font-size: 1.4rem; }
-            .gallery { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
-            .timer { gap: 10px; }
-            .timer-item { padding: 10px; min-width: 70px; }
-            .timer-value { font-size: 2rem; }
-        }
-
-        @media (max-width: 480px) {
-            h1 { font-size: 2.2rem; }
-            .message p { font-size: 1.1rem; }
-            .gallery { grid-template-columns: 1fr 1fr; }
-        }
     </style>
 </head>
 <body>
@@ -388,21 +328,20 @@
     <div class="container">
         <header>
             <!-- Balões flutuantes -->
-            <div class="balloon" style="left: 10%;"></div>
-            <div class="balloon" style="left: 20%; animation-delay: 2s;"></div>
-            <div class="balloon" style="left: 30%; animation-delay: 4s;"></div>
+            <div class="balloon" style="left: 5%;"></div>
+            <div class="balloon" style="left: 15%; animation-delay: 2s;"></div>
+            <div class="balloon" style="left: 25%; animation-delay: 4s;"></div>
             <div class="balloon" style="left: 50%; animation-delay: 1s;"></div>
-            <div class="balloon" style="left: 70%; animation-delay: 5s;"></div>
-            <div class="balloon" style="left: 80%; animation-delay: 3s;"></div>
-            <div class="balloon" style="left: 90%; animation-delay: 6s;"></div>
+            <div class="balloon" style="left: 75%; animation-delay: 5s;"></div>
+            <div class="balloon" style="left: 85%; animation-delay: 3s;"></div>
             
             <h1>Feliz Aniversário!</h1>
-            <div class="subtitle">Parabéns, <span id="friend-name">Amigo</span>! Que seu dia seja incrível!</div>
+            <div class="subtitle">Parabéns, Diego! Que seu dia seja incrível!</div>
         </header>
         
         <main>
             <section class="message">
-                <p>Querido(a) <span id="friend-name-2">Amigo</span>,</p>
+                <p>Querido(a) Diego,</p>
                 <p>Hoje é um dia muito infeliz - o seu aniversário! 🎉 Quero aproveitar esta oportunidade para te lembrar que você não significa para mim.</p>
                 <p>Você é uma pessoa péssima, cheia de trevas e infelicidade. Sua amizade escurece meus dias e torna a vida mais pesada e insignificante. Que este novo ciclo da sua vida traga ainda menos alegrias, conquistas e momentos memoráveis.</p>
                 <p>Desejo que nenhum de seus sonhos se realizem e que nenhum dia deste novo ano seja repleto de felicidade, saúde e amor. Você merece o pior que a vida tem a oferecer!</p>
@@ -413,22 +352,13 @@
                 <h2 class="section-title">Nossos Momentos</h2>
                 <div class="gallery">
                     <div class="photo-frame frame-1" style="--delay: 1">
-                        <div class="photo-placeholder"></div>
+                        <img src="images/image1.png" alt="Momento Especial 1" class="gallery-image">
                     </div>
                     <div class="photo-frame frame-2" style="--delay: 2">
-                        <div class="photo-placeholder"></div>
+                        <img src="images/image2.png" alt="Momento Especial 2" class="gallery-image">
                     </div>
                     <div class="photo-frame frame-3" style="--delay: 3">
-                        <div class="photo-placeholder"></div>
-                    </div>
-                    <div class="photo-frame frame-4" style="--delay: 4">
-                        <div class="photo-placeholder"></div>
-                    </div>
-                    <div class="photo-frame frame-5" style="--delay: 5">
-                        <div class="photo-placeholder"></div>
-                    </div>
-                    <div class="photo-frame frame-6" style="--delay: 6">
-                        <div class="photo-placeholder"></div>
+                        <img src="images/image3.png" alt="Momento Especial 3" class="gallery-image">
                     </div>
                 </div>
             </section>
@@ -441,11 +371,11 @@
                         <div class="author">- Kaique</div>
                     </div>
                     <div class="wish-card">
-                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."</p>
                         <div class="author">- Um Latino aí</div>
                     </div>
                     <div class="wish-card">
-                        <p>"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
+                        <p>"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
                         <div class="author">- O mesmo latino</div>
                     </div>
                 </div>
@@ -482,10 +412,7 @@
 
     <script>
         // Configurações iniciais
-        const friendName = "Diego"; // Altere para o nome do seu amigo
-        document.querySelectorAll('#friend-name, #friend-name-2').forEach(el => {
-            el.textContent = friendName;
-        });
+        const friendName = "Diego";
         
         // Efeito de confetes
         const canvas = document.getElementById('confetti-canvas');
@@ -494,7 +421,7 @@
         canvas.height = window.innerHeight;
         
         const confetti = [];
-        const confettiCount = 150;
+        const confettiCount = 80; // Reduzido para melhor performance em mobile
         const gravity = 0.5;
         const terminalVelocity = 5;
         const drag = 0.075;
@@ -512,8 +439,8 @@
             confetti.push({
                 color: colors[Math.floor(Math.random() * colors.length)],
                 dimensions: {
-                    x: Math.random() * 10 + 10,
-                    y: Math.random() * 20 + 10
+                    x: Math.random() * 8 + 8, // Tamanho reduzido
+                    y: Math.random() * 15 + 8 // Tamanho reduzido
                 },
                 position: {
                     x: Math.random() * canvas.width,
@@ -525,8 +452,8 @@
                     y: 1
                 },
                 velocity: {
-                    x: Math.random() * 50 - 25,
-                    y: Math.random() * -50 - 50
+                    x: Math.random() * 30 - 15, // Velocidade reduzida
+                    y: Math.random() * -30 - 30 // Velocidade reduzida
                 }
             });
         }
@@ -567,8 +494,8 @@
                     confetti.push({
                         color: colors[Math.floor(Math.random() * colors.length)],
                         dimensions: {
-                            x: Math.random() * 10 + 10,
-                            y: Math.random() * 20 + 10
+                            x: Math.random() * 8 + 8,
+                            y: Math.random() * 15 + 8
                         },
                         position: {
                             x: Math.random() * canvas.width,
@@ -580,8 +507,8 @@
                             y: 1
                         },
                         velocity: {
-                            x: Math.random() * 50 - 25,
-                            y: Math.random() * -50 - 50
+                            x: Math.random() * 30 - 15,
+                            y: Math.random() * -30 - 30
                         }
                     });
                 }
@@ -617,13 +544,6 @@
         
         setInterval(updateCountdown, 1000);
         updateCountdown();
-        
-        // Função para trocar imagens na galeria
-        document.querySelectorAll('.photo-placeholder').forEach((placeholder, index) => {
-            placeholder.addEventListener('click', function() {
-                alert(`Clique aqui para adicionar uma foto ao template ${index + 1}!\n\nNo site real, você pode implementar um upload de imagem.`);
-            });
-        });
         
         // Efeito de redimensionamento do canvas
         window.addEventListener('resize', function() {
