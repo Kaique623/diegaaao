@@ -596,7 +596,7 @@
         // Contagem regressiva para o próximo aniversário
         function updateCountdown() {
             const now = new Date();
-            const nextBirthday = new Date(now.getFullYear(), 6, 5); // Altere para o mês (0-11) e dia do aniversário
+            const nextBirthday = new Date(now.getFullYear(), 5, 6); // Altere para o mês (0-11) e dia do aniversário
             
             if (now > nextBirthday) {
                 nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
