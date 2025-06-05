@@ -397,16 +397,16 @@
             <div class="balloon" style="left: 90%; animation-delay: 6s;"></div>
             
             <h1>Feliz Aniversário!</h1>
-            <div class="subtitle">Parabéns, <span id="friend-name">Amigo</span>! Que seu dia seja incrível!</div>
+            <div class="subtitle">Parabéns, <span id="friend-name">Amigo</span>! Que seu dia seja horrível!</div>
         </header>
         
         <main>
             <section class="message">
                 <p>Querido(a) <span id="friend-name-2">Amigo</span>,</p>
-                <p>Hoje é um dia muito especial - o seu aniversário! 🎉 Quero aproveitar esta oportunidade para celebrar você e tudo o que você significa para mim.</p>
-                <p>Você é uma pessoa incrível, cheia de luz e positividade. Sua amizade ilumina meus dias e torna a vida mais leve e divertida. Que este novo ciclo da sua vida traga ainda mais alegrias, conquistas e momentos memoráveis.</p>
-                <p>Desejo que todos os seus sonhos se realizem e que cada dia deste novo ano seja repleto de felicidade, saúde e amor. Você merece o melhor que a vida tem a oferecer!</p>
-                <p class="signature">Com todo carinho,<br>Seu amigo(a)</p>
+                <p>Hoje é um dia muito infeliz - o seu aniversário! 🎉 Quero aproveitar esta oportunidade para te lembrar que você não significa para mim.</p>
+                <p>Você é uma pessoa péssima, cheia de trevas e infelicidade. Sua amizade escurece meus dias e torna a vida mais pesada e insignificante. Que este novo ciclo da sua vida traga ainda menos alegrias, conquistas e momentos memoráveis.</p>
+                <p>Desejo que nenhum de seus sonhos se realizem e que nenhum dia deste novo ano seja repleto de felicidade, saúde e amor. Você merece o pior que a vida tem a oferecer!</p>
+                <p class="signature">Com todo carinho (muito pouco por sinal),<br>Kaique</p>
             </section>
             
             <section class="gallery-section">
@@ -437,16 +437,16 @@
                 <h2>Mensagens dos Amigos</h2>
                 <div class="wish-cards">
                     <div class="wish-card">
-                        <p>"Parabéns pelo seu dia! Que seja repleto de alegrias e conquistas. Você merece o melhor!"</p>
-                        <div class="author">- Carlos</div>
+                        <p>"Eu até ia colocar varios textos fofos de amigos seus, até que lembrei que vc n tem nenhum, dito isso, coloquei alguns textos de placeholder para preencher espaço"</p>
+                        <div class="author">- Kaique</div>
                     </div>
                     <div class="wish-card">
-                        <p>"Feliz aniversário! Que este novo ano traga muita saúde, paz e realizações. Um grande abraço!"</p>
-                        <div class="author">- Ana</div>
+                        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                        <div class="author">- Um Latino aí</div>
                     </div>
                     <div class="wish-card">
-                        <p>"Hoje é seu dia especial! Aproveite cada momento e saiba que você é uma pessoa incrível. Parabéns!"</p>
-                        <div class="author">- Pedro</div>
+                        <p>"Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."</p>
+                        <div class="author">- O mesmo latino</div>
                     </div>
                 </div>
             </section>
@@ -482,7 +482,7 @@
 
     <script>
         // Configurações iniciais
-        const friendName = "João"; // Altere para o nome do seu amigo
+        const friendName = "Diego"; // Altere para o nome do seu amigo
         document.querySelectorAll('#friend-name, #friend-name-2').forEach(el => {
             el.textContent = friendName;
         });
@@ -596,7 +596,7 @@
         // Contagem regressiva para o próximo aniversário
         function updateCountdown() {
             const now = new Date();
-            const nextBirthday = new Date(now.getFullYear(), 9, 15); // Altere para o mês (0-11) e dia do aniversário
+            const nextBirthday = new Date(now.getFullYear(), 6, 5); // Altere para o mês (0-11) e dia do aniversário
             
             if (now > nextBirthday) {
                 nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
